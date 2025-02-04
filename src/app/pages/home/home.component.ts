@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,8 @@ export class HomeComponent implements OnInit {
   constructor(private olympicService: OlympicService) {}
 
   ngOnInit(): void {
-    this.olympics$ = this.olympicService.getOlympics();
+    this.olympics$ = this.olympicService.getOlympics().pipe(
+      tap(data => console.log('Data JO', data))
+    );
   }
 }
