@@ -3,6 +3,20 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
+export interface Olympic {
+  country: string;
+  id: number;
+  participations: [
+    {
+      id : number;
+      year: number;
+      city: string;
+      medalsCount : number;
+      athleteCount: number;
+    }
+  ]
+}
+
 @Injectable({
   providedIn: 'root',
 })

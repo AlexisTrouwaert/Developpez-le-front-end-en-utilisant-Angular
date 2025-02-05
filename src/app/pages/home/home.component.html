@@ -2,7 +2,19 @@
 <hr />
 <div class="datas" *ngIf="olympics$ | async as olympics">
     <p *ngFor="let olympic of olympics">
-        {{olympic.country}} - {{olympic.participations[0].city}}
+        {{olympic.participations | json}}
     </p>
+    <!--
+    On boucle sur la data des JO, et on envoie le tableau des participations
+    à la fonction totalMedals qui fais le total de médails par pays
+    <p *ngFor="let count in olympics">
+        {{totalMedals(count)}} - {{count | json}}
+    </p>
+    -->
+    <div *ngFor="let participations of olympics">
+        <p>
+            {{medalsCount(participations)}}
+        </p>
+    </div>
 </div>
 <p>{{ (olympics$ | async)?.length }} data loaded</p>
